@@ -7,12 +7,10 @@ app.use(bodyParser.json());
 
 let animals = [];
 
-// GET all animals
 app.get("/animals", (req, res) => {
   res.json(animals);
 });
 
-// POST new animal
 app.post("/animals", (req, res) => {
   const { name, species } = req.body;
   const newAnimal = { name, species };
@@ -20,7 +18,6 @@ app.post("/animals", (req, res) => {
   res.status(201).json(newAnimal);
 });
 
-// PUT update animal by name
 app.put("/animals/:name", (req, res) => {
   const { name } = req.params;
   const { species } = req.body;
@@ -33,7 +30,6 @@ app.put("/animals/:name", (req, res) => {
   }
 });
 
-// DELETE animal by name
 app.delete("/animals/:name", (req, res) => {
   const { name } = req.params;
   animals = animals.filter((animal) => animal.name !== name);
